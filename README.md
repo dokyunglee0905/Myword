@@ -1,0 +1,2 @@
+# Myword
+sparta_Myword
