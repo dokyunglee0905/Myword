@@ -23,13 +23,7 @@ import React, { useEffect } from 'react';
 
 
 function App() {
-
-  const dispatch = useDispatch();
-
-  React.useEffect(()=>{
-    dispatch(loadMywordlistFB());
-  },[]);
-
+  
   // 데이터 가져오는거!!!!
   // React.useEffect(async() => {
   //   const query = await getDocs(collection(db, 'homework'));

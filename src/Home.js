@@ -1,29 +1,18 @@
 import './App.css';
 import React from 'react';
 
-import styles from './Home.module.css';
-
 import { useHistory } from "react-router-dom"
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import styled, { keyframes } from "styled-components"
-
-import { AiOutlineCheckSquare } from 'react-icons/ai';
-import { AiFillEdit } from 'react-icons/ai';
+//스타일 import
+import styled from "styled-components"
 import { BiEdit } from "react-icons/bi";
 
-import {createMywordlist,loadMywordlistFB} from "./redux/modules/mywordlist"
 
-import {db} from "./firebase"
-import { 
-  collection,
-  getDoc, 
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc} from "firebase/firestore";
+import { loadMywordlistFB } from "./redux/modules/mywordlist"
 
-import { useDispatch } from "react-redux";
+
 
 
 
@@ -31,9 +20,9 @@ function Home() {
 
   const dispatch = useDispatch();
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     dispatch(loadMywordlistFB());
-  },[]);
+  }, []);
 
 
   const history = useHistory();
@@ -57,55 +46,67 @@ function Home() {
   console.log(list)
 
   return (
+    
+    <Main>
+      <h1>나만의 단어장</h1>
+      <Line />
 
-    <div className="App">
-      <h1>저는 어떤사람인가요</h1>
-      <hr className='line'></hr>
-
-      {list.map((wordlist, index) => {
-        return (
-          <div className="wordwrap" key={index}>
-            <a className='icon'><AiOutlineCheckSquare /> <AiFillEdit /></a>
-            <p>예명 : {wordlist.word}</p>
-            <p>인상 깊었던 부분 : {wordlist.desc}</p>
-            <p>응원의 한마디 : {wordlist.example}</p>
-          </div>
-        )
-      })}
-
-      <Btnplus onClick={() => { history.push("/Detail") }}> <BiEdit className={styles.sizeUp} />  </Btnplus>
-    </div>
+      <Container>
+        {list.map((wordlist, index) => {
+          return (
+            <WordCard key={index}>
+              <p>단어 : {wordlist.word}</p>
+              <p>설명 : {wordlist.desc}</p>
+              <p>예시 : {wordlist.example}</p>
+            </WordCard>
+          )
+        })}
+      </Container>
+      <Btnplus onClick={() => { history.push("/Detail") }}> <BiEdit size='50' />  </Btnplus>
+    </Main>
   );
 }
+
+const Main = styled.div`
+  width: 100vw;
+  margin: auto;
+
+`
+
+const Container = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 30px;
+    margin: 60px;
+
+    justify-content: center; /* 수평 가운데 정렬 */
+
+`
+
+const Line = styled.hr`
+  border-color: yellow;
+  letter-spacing: 100px;
+`
+
+const WordCard = styled.div`
+  position: relative;
+  width: 350px;
+  padding: 20px;
+  border: 2px solid yellow;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 20px;
+ 
+`
 
 const Btnplus = styled.div`
   float:right;
   margin-right: 30px;
   size : 60;
   color: yellow;
+  transition-duration: 0.5s;
+  &:hover { transform: rotate(90deg); }
   
 `
-const BtnFade = keyframes`
-  0%{
-    transform: none;
-  }
-
-  25%{
-    transform: scale(2);
-  }
-
-  50%{
-    transform: scale(1.7);
-  }
-
-  75%{
-    transform: scale(2.1);
-  }
-
-  100{
-    transform: none;
-  }
-`
-
 
 export default Home;
