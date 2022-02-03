@@ -1,0 +1,111 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.input{
+  border-style:none;
+  border-bottom:solid 1px yellow;
+  border-collapse:collapse;
+  margin: 5px;
+}
+
+.label{
+  text-align: left;
+}
+
+.line{
+  border-color: yellow;
+  letter-spacing: 100px;
+}
+
+.wordwrap{
+  position: relative;
+  width: 350px;
+  padding: 20px;
+  border: 2px solid yellow;
+  border-radius: 10px;
+  transition: box-shadow 300ms ease-in-out 0s;
+  text-align: left;
+  font-family: 'Dongle', sans-serif;
+}
+
+.icon{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+
+.ContentTitle{
+  font-size: 0.8rem;
+  text-decoration: underline;
+  text-align: left;
+  margin-top: 20px;
+}
+
+
+.savebtn{
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  color: black(255, 255, 255);
+  background-color: yellow;
+  width: 200px;
+  height: 40px;
+  font-size: 16px;
+  align-self: center;
+  border-radius: 5px;
+  margin:  10px;
+}
+
+.wordmemo{
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  max-width: 400px;
+  margin: 50px auto;
+}
+
+
+
